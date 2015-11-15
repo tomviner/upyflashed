@@ -56,7 +56,6 @@ def main():
         '--verbose',
         action='store_true',
         default=False,
-        help='Filepath your computer mounts the Micro:bit at'
     )
 
     args = parser.parse_args()
