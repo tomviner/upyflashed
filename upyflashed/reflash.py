@@ -13,6 +13,8 @@ logger = logging.getLogger(__name__)
 HEX_GLOB = 'micropython*.hex'
 SLEEP_TIME = 1
 
+class ParamError(ValueError):
+    pass
 
 def get_default_download_path():
     home = os.path.expanduser('~')
@@ -20,8 +22,14 @@ def get_default_download_path():
 
 
 def reflash_upon_new(download_path, microbit_path):
-    previous_hex = None
+    if not microbit_path:
+        raise ParamError("Need to set microbit_path")
+    if not os.path.exists(download_path):
+        raise ParamError("download_path {} doesn't exist".format(download_path))
+    if not os.path.isdir(download_path):
+        raise ParamError("download_path {} isn't a directory".format(download_path))
 
+    previous_hex = None
     while True:
         all_hexes = glob(os.path.join(download_path, HEX_GLOB))
         latest_hex_path = max(all_hexes, key=os.path.getctime)
