@@ -3,6 +3,8 @@ A script to watch for new hex files from https://github.com/ntoll/upyed and flas
 
 `upyflashed` will poll your browser download directory for new hex files. If one is found it will copy it to the Micro:bit storage location.
 
+**Note**: currently only tested on Linux (Ubuntu). The approach attempts to be cross platform but bug reports / fixes gratefully accepted.
+
 ## Installation
 
 ```bash
