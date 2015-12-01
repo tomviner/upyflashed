@@ -42,7 +42,7 @@ def reflash_upon_new(download_path, microbit_path):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='A script to watch for new hex files from '
+        description='A command to watch for new hex files from '
         'https://github.com/ntoll/upyed and flash the micro:bit immediately')
 
     parser.add_argument(

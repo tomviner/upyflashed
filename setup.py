@@ -1,4 +1,9 @@
+import os
 from setuptools import setup, find_packages
+
+
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
 setup(
@@ -6,7 +11,8 @@ setup(
 
     version='0.1.0',
 
-    description='A command to watch for new hex files from https://github.com/ntoll/upyed and flash the micro:bit immediately',
+    description='A command to watch for new hex files from upyed and flash the micro:bit immediately',
+    long_description=read('README.rst'),
 
     url='https://github.com/tomviner/upyflashed',
 
