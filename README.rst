@@ -1,3 +1,8 @@
+.. image:: https://img.shields.io/pypi/v/upyflashed.svg
+    :target: https://pypi.python.org/pypi/upyflashed/
+    :alt: Latest PyPI version
+
+
 upyflashed
 ==========
 
