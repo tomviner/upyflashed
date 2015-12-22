@@ -10,6 +10,7 @@ def read_psutil():
         if mount.endswith(MICROBIT):
             return mount
 
+# room to add further methods of finding the micro:bit, later
 methods = (read_psutil,)
 
 def get_default_microbit_path():

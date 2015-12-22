@@ -14,7 +14,7 @@ files. If one is found it will copy it to the micro:bit storage
 location.
 
 **Note**: The approach attempts to be cross platform but bug reports /
-fixes gratefully accepted. Currently only tested on Linux and Windows.
+fixes gratefully accepted. Currently tested on Linux and Windows.
 
 Installation
 ------------
@@ -25,6 +25,18 @@ Installation
 
 Usage
 -----
+
+.. code:: bash
+
+    $ upyflashed
+
+*Default options*:
+
+- download path: ``~/Downloads``
+- microbit path: psutils looks for a disk partition mount point ending in *MICROBIT*
+
+Custom
+~~~~~~
 
 .. code:: bash
 
