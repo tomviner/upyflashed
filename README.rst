@@ -33,7 +33,7 @@ Usage
 *Default options*:
 
 - download path: ``~/Downloads``
-- microbit path: psutils looks for a disk partition mount point ending in *MICROBIT*
+- microbit path: psutil looks for a disk partition mount point ending in *MICROBIT*
 
 Custom
 ~~~~~~
