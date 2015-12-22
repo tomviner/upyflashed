@@ -33,21 +33,23 @@ def reflash_upon_new(download_path, microbit_path):
     logger.info("Looking for hex files in {}".format(download_path))
 
     previous_hex = None
-    no_hex_warn = False
+    missing_hex_warn = True
     while True:
         all_hexes = glob(os.path.join(download_path, HEX_GLOB))
-        if not all_hexes:
-            if not no_hex_warn:
+        hexes_missing = len(all_hexes) == 0
+        if hexes_missing:
+            if missing_hex_warn:
                 logger.info("{} does not contain any hex files".format(download_path))
-                no_hex_warn = True
-            continue
-        no_hex_warn = False
-        latest_hex_path = max(all_hexes, key=os.path.getctime)
-        if latest_hex_path != previous_hex:
-            logger.info(latest_hex_path)
-            shutil.copy(latest_hex_path, microbit_path)
+                missing_hex_warn = False
+            previous_hex = None
+        else:
+            missing_hex_warn = True
+            latest_hex_path = max(all_hexes, key=os.path.getctime)
+            if latest_hex_path != previous_hex:
+                logger.info(latest_hex_path)
+                shutil.copy(latest_hex_path, microbit_path)
+            previous_hex = latest_hex_path
         time.sleep(SLEEP_TIME)
-        previous_hex = latest_hex_path
 
 
 def main():
