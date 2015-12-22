@@ -30,6 +30,7 @@ def reflash_upon_new(download_path, microbit_path):
         raise ParamError("download_path {} doesn't exist".format(download_path))
     if not os.path.isdir(download_path):
         raise ParamError("download_path {} isn't a directory".format(download_path))
+    logger.info("Looking for hex files in {}".format(download_path))
 
     previous_hex = None
     no_hex_warn = False
@@ -37,7 +38,7 @@ def reflash_upon_new(download_path, microbit_path):
         all_hexes = glob(os.path.join(download_path, HEX_GLOB))
         if not all_hexes:
             if not no_hex_warn:
-                logger.info("download_path does not contain any hex files.")
+                logger.info("{} does not contain any hex files".format(download_path))
                 no_hex_warn = True
             continue
         no_hex_warn = False
@@ -61,11 +62,12 @@ def main():
         help='Filepath your browser stores downloads'
     )
 
+    default_microbit_path = get_default_microbit_path()
     parser.add_argument(
         '--microbit_path',
         type=str,
         default=get_default_microbit_path(),
-        help='Filepath your computer mounts the Micro:bit at'
+        help='Filepath your computer mounts the micro:bit'
     )
 
     parser.add_argument(
@@ -80,6 +82,9 @@ def main():
     if args.verbose:
         logging.basicConfig(level=logging.DEBUG)
         logger.debug(args)
+
+    if not args.microbit_path and not default_microbit_path:
+        raise ParamError("No micro:bit path detected, did you plug it in?")
 
     reflash_upon_new(args.download_path, args.microbit_path)
 
