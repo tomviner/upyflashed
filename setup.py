@@ -9,7 +9,7 @@ def read(fname):
 setup(
     name='upyflashed',
 
-    version='0.1.1',
+    version='0.1.2',
 
     description='A command to watch for new hex files from upyed and flash the micro:bit immediately',
     long_description=read('README.rst') + read('CHANGES.rst'),
